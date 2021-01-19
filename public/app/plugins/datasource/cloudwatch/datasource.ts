@@ -270,7 +270,8 @@ export class CloudWatchDatasource extends DataSourceApi<CloudWatchQuery, CloudWa
           item.namespace = this.replace(item.namespace, options.scopedVars, true, 'namespace');
           item.metricName = this.replace(item.metricName, options.scopedVars, true, 'metric name');
           item.dimensions = this.convertDimensionFormat(item.dimensions, options.scopedVars);
-          item.statistics = item.statistics.map(stat => this.replace(stat, options.scopedVars, true, 'statistics'));
+          // item.statistics = item.statistics.map(stat => this.replace(stat, options.scopedVars, true, 'statistics'));
+          item.statistic = this.replace(item.statistics[0], options.scopedVars, true, 'statistics');
           item.period = String(this.getPeriod(item, options)); // use string format for period in graph query, and alerting
           item.id = this.templateSrv.replace(item.id, options.scopedVars);
           item.expression = this.templateSrv.replace(item.expression, options.scopedVars);
