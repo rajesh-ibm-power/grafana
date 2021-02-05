@@ -1,7 +1,9 @@
 language: node_js
+arch:
+  - amd64
+  - ppc64le
 node_js:
-- '0.10'
-before_install:
-- npm install -g typescript@1.0
+  - lts/*
 script:
-- npm test
+  - "npm run lint"
+  - "npm run test"
